@@ -1,5 +1,5 @@
 {
-  "name": "cra-material-ui",
+  "name": "joyn-alloc-ui",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
@@ -17,7 +17,8 @@
     "start": "react-app-rewired start",
     "build": "react-app-rewired build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "deploy": "firebase deploy"
   },
   "eslintConfig": {
     "extends": [

@@ -6,12 +6,13 @@ import { ThemeProvider } from '@material-ui/core/styles';
 
 import theme from 'styles/theme';
 import Layout from 'hoc/Layout';
+import Hierarchy from 'components/Hierarchy';
 
 const App = () => (
   <ThemeProvider theme={theme}>
     <CssBaseline />
     <Layout>
-      App
+      <Hierarchy />
     </Layout>
   </ThemeProvider>
 );

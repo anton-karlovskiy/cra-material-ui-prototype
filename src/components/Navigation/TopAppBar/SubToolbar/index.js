@@ -5,7 +5,7 @@ import Paper from '@material-ui/core/Paper';
 import Tabs from '@material-ui/core/Tabs';
 import Tab from '@material-ui/core/Tab';
 
-import JoynSelect from 'components/JoynSelect';
+import LabeledSelect from 'components/LabeledSelect';
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -31,6 +31,21 @@ const useStyles = makeStyles(theme => ({
   }
 }));
 
+const subMenus = [
+  {
+    id: 1,
+    label: 'Dashboard',
+  },
+  {
+    id: 2,
+    label: 'Diagram',
+  },
+  {
+    id: 3,
+    label: 'Results',
+  }
+];
+
 const SubToolbar = () => {
   const classes = useStyles();
   const [value, setValue] = React.useState(2);
@@ -41,19 +56,26 @@ const SubToolbar = () => {
 
   return (
     <Paper className={classes.root} elevation={0}>
-      {/* TODO: Tabs might be independent component */}
       <Tabs
         classes={{indicator: classes.tabIndicator}}
         value={value}
         indicatorColor='primary'
         textColor='inherit'
         onChange={onChangeHandler}
-        aria-label='navigation tabs'>
-        <Tab classes={{root: classes.tab}} label='Dashboard' />
-        <Tab classes={{root: classes.tab}} label='Diagram' />
-        <Tab classes={{root: classes.tab}} label='Results' />
+        aria-label='navigation subMenus'>
+        { subMenus.map(subMenu => (
+          <Tab
+            key={subMenu.id}
+            classes={{root: classes.tab}}
+            label={subMenu.label} />
+        )) }
       </Tabs>
-      <JoynSelect />
+      <div>
+        <LabeledSelect label='Product' />
+        <LabeledSelect label='Disposition' />
+        {/* TODO: datepicker */}
+        <LabeledSelect label='Date' />
+      </div>
     </Paper>
   );
 };

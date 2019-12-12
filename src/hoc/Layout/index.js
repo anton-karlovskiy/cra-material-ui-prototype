@@ -1,5 +1,5 @@
 
-import React from 'react';
+import React, { useState } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 
 import TopAppBar from 'components/Navigation/TopAppBar';
@@ -19,11 +19,20 @@ const useStyles = makeStyles(theme => ({
 
 const Layout = ({ children }) => {
   const classes = useStyles();
+  const [open, setOpen] = useState(false);
+
+  const openDrawerHandler = () => {
+    setOpen(true);
+  };
+
+  const closeDrawerHandler = () => {
+    setOpen(false);
+  };
 
   return (
     <div className={classes.root}>
-      <TopAppBar />
-      <LeftSideDrawer />
+      <TopAppBar openDrawer={openDrawerHandler} closeDrawer={closeDrawerHandler} open={open} />
+      <LeftSideDrawer open={open} />
       <main className={classes.main}>
         {children}
       </main>

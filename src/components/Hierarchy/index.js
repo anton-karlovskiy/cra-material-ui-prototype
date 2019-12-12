@@ -1,10 +1,10 @@
 
 import React from 'react';
-import { makeStyles } from '@material-ui/core/styles';
+import { makeStyles, useTheme } from '@material-ui/core/styles';
 import TreeView from '@material-ui/lab/TreeView';
 
-import LightTealPlusIcon from 'components/Icons/LightTealPlusIcon';
-import LightTealMinusIcon from 'components/Icons/LightTealMinusIcon';
+import PlusIcon from 'components/Icons/SvgIcons/PlusIcon';
+import MinusIcon from 'components/Icons/SvgIcons/MinusIcon';
 import JoynTreeItem from 'components/Hierarchy/JoynTreeItem';
 
 const GeographicalHierarchy = [
@@ -107,13 +107,14 @@ const renderTreeItems = treeItems => (
 
 const Hierarchy = () => {
   const classes = useStyles();
+  const theme = useTheme();
 
   return (
     <TreeView
       className={classes.root}
       defaultExpanded={['permian-basin']}
-      defaultCollapseIcon={<LightTealMinusIcon />}
-      defaultExpandIcon={<LightTealPlusIcon />}
+      defaultCollapseIcon={<MinusIcon color={theme.palette.primary.main} />}
+      defaultExpandIcon={<PlusIcon color={theme.palette.primary.main} />}
       defaultEndIcon={null}>
       {renderTreeItems(GeographicalHierarchy)}
     </TreeView>

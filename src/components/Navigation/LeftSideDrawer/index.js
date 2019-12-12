@@ -1,34 +1,58 @@
 
 import React from 'react';
+import clsx from 'clsx';
 import { makeStyles } from '@material-ui/core/styles';
 import Drawer from '@material-ui/core/Drawer';
-import Divider from '@material-ui/core/Divider';
 
-import Hierarchy from 'components/Hierarchy';
+import DrawerHeader from 'components/Navigation/LeftSideDrawer/DrawerHeader';
+import DrawerMenu from 'components/Navigation/LeftSideDrawer/DrawerMenu';
 
 const useStyles = makeStyles(theme => ({
   drawer: {
-    width: theme.layout.drawerWidth,
-    flexShrink: 0
+    flexShrink: 0,
+    whiteSpace: 'nowrap'
   },
   drawerPaper: {
-    width: theme.layout.drawerWidth
+    border: 'none',
+    backgroundColor: theme.palette.blueGrey,
+    boxShadow: `${theme.spacing(10/8, 20/8, 32/8, 0)} rgba(208, 235, 237, 0.3)`
   },
-  toolbar: theme.mixins.toolbar // TODO: modular with UI components
+  drawerOpen: {
+    width: theme.layout.openDrawerWidth,
+    transition: theme.transitions.create('width', {
+      easing: theme.transitions.easing.sharp,
+      duration: theme.transitions.duration.enteringScreen
+    })
+  },
+  closeDrawer: {
+    transition: theme.transitions.create('width', {
+      easing: theme.transitions.easing.sharp,
+      duration: theme.transitions.duration.leavingScreen
+    }),
+    overflowX: 'hidden',
+    width: theme.layout.closeDrawerWidth
+  }
 }));
 
-const LeftSideDrawer = () => {
+const LeftSideDrawer = ({ open }) => {
   const classes = useStyles();
 
   return (
     <Drawer
-      className={classes.drawer}
       variant='permanent'
-      classes={{paper: classes.drawerPaper}}
-      anchor='left'>
-      <div className={classes.toolbar} />
-      <Divider />
-      <Hierarchy />
+      className={clsx(classes.drawer, {
+        [classes.drawerOpen]: open,
+        [classes.closeDrawer]: !open
+      })}
+      classes={{
+        paper: clsx(classes.drawerPaper, {
+          [classes.drawerOpen]: open,
+          [classes.closeDrawer]: !open
+        })
+      }}
+      open={open}>
+      <DrawerHeader />
+      <DrawerMenu />
     </Drawer>
   );
 };

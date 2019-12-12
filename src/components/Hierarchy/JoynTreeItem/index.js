@@ -8,7 +8,7 @@ import TransitionComponent from 'components/Hierarchy/TransitionComponent';
 const JoynTreeItem = withStyles(theme => ({
   root: {
     '&:focus > .MuiTreeItem-content': {
-      backgroundColor: theme.palette.lightTeal
+      backgroundColor: theme.palette.primary.main
     }
   },
   group: {

@@ -1,6 +1,5 @@
 
-// TODO: double check if we need reponsive font sizes
-import { createMuiTheme/*, responsiveFontSizes*/ } from '@material-ui/core/styles';
+import { createMuiTheme } from '@material-ui/core/styles';
 
 const theme = createMuiTheme({
   palette: {
@@ -25,10 +24,11 @@ const theme = createMuiTheme({
     background: {
       default: '#fafafa'
     },
-    lightTeal: '#00cfba', // TODO: duplicated primary main
     lightGrey: '#f5f6f8',
+    blueGrey: '#424f62',
     text: {
-      primary: '#2f2f2f'
+      primary: '#2f2f2f',
+      secondary: '#fff'
     }
   },
   overrides: {
@@ -84,7 +84,8 @@ const theme = createMuiTheme({
     }
   },
   layout: {
-    drawerWidth: 272
+    openDrawerWidth: 272, // TODO: adjust according to design
+    closeDrawerWidth: 64
   }
 });
 
