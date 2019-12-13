@@ -16,8 +16,8 @@ import SubToolbar from 'components/Navigation/TopAppBar/SubToolbar';
 
 const useStyles = makeStyles(theme => ({
   appBar: {
-    marginLeft: theme.layout.closeDrawerWidth,
-    width: `calc(100% - ${theme.layout.closeDrawerWidth}px)`,
+    marginLeft: theme.custom.layout.closeDrawerWidth,
+    width: `calc(100% - ${theme.custom.layout.closeDrawerWidth}px)`,
     zIndex: theme.zIndex.drawer + 1,
     transition: theme.transitions.create(['width', 'margin'], {
       easing: theme.transitions.easing.sharp,
@@ -27,8 +27,8 @@ const useStyles = makeStyles(theme => ({
     backgroundColor: theme.palette.common.white
   },
   appBarShift: {
-    marginLeft: theme.layout.openDrawerWidth,
-    width: `calc(100% - ${theme.layout.openDrawerWidth}px)`,
+    marginLeft: theme.custom.layout.openDrawerWidth,
+    width: `calc(100% - ${theme.custom.layout.openDrawerWidth}px)`,
     transition: theme.transitions.create(['width', 'margin'], {
       easing: theme.transitions.easing.sharp,
       duration: theme.transitions.duration.enteringScreen

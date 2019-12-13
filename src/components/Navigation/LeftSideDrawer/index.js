@@ -14,11 +14,11 @@ const useStyles = makeStyles(theme => ({
   },
   drawerPaper: {
     border: 'none',
-    backgroundColor: theme.palette.blueGrey,
+    backgroundColor: theme.custom.palette.blueGrey,
     boxShadow: `${theme.spacing(10/8, 20/8, 32/8, 0)} rgba(208, 235, 237, 0.3)`
   },
   drawerOpen: {
-    width: theme.layout.openDrawerWidth,
+    width: theme.custom.layout.openDrawerWidth,
     transition: theme.transitions.create('width', {
       easing: theme.transitions.easing.sharp,
       duration: theme.transitions.duration.enteringScreen
@@ -30,7 +30,7 @@ const useStyles = makeStyles(theme => ({
       duration: theme.transitions.duration.leavingScreen
     }),
     overflowX: 'hidden',
-    width: theme.layout.closeDrawerWidth
+    width: theme.custom.layout.closeDrawerWidth
   }
 }));
 

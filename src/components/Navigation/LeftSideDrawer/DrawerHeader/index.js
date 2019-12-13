@@ -28,7 +28,7 @@ const DrawerHeader = () => {
   return (
     <div className={classes.root}>
       <div className={classes.flex}>
-        <Logo widthSpan={theme.layout.closeDrawerWidth} />
+        <Logo widthSpan={theme.custom.layout.closeDrawerWidth} />
         <Typography variant='h4' color='secondary'>My Networks</Typography>
       </div>
       <SearchIcon width={17} height={17} color={theme.palette.primary.main} />

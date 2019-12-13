@@ -9,7 +9,7 @@ import LabeledSelect from 'components/LabeledSelect';
 
 const useStyles = makeStyles(theme => ({
   root: {
-    backgroundColor: theme.palette.lightGrey,
+    backgroundColor: theme.custom.palette.lightGrey,
     display: 'flex',
     justifyContent: 'space-between',
     alignItems: 'center'

@@ -24,8 +24,7 @@ const theme = createMuiTheme({
     background: {
       default: '#fafafa'
     },
-    lightGrey: '#f5f6f8',
-    blueGrey: '#424f62',
+    
     text: {
       primary: '#2f2f2f',
       secondary: '#fff'
@@ -83,9 +82,19 @@ const theme = createMuiTheme({
       letterSpacing: '-0.22px'
     }
   },
-  layout: {
-    openDrawerWidth: 272, // TODO: adjust according to design
-    closeDrawerWidth: 64
+  custom: {
+    palette: {
+      lightGrey: '#f5f6f8',
+      blueGrey: '#424f62',
+      grey: '#4A4A4A',
+      red: '#F66',
+      green: '#6C6',
+      blue: '#387DF4'
+    },
+    layout: {
+      openDrawerWidth: 272, // TODO: adjust according to design
+      closeDrawerWidth: 64
+    }
   }
 });
 
