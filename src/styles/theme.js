@@ -24,7 +24,6 @@ const theme = createMuiTheme({
     background: {
       default: '#fafafa'
     },
-    
     text: {
       primary: '#2f2f2f',
       secondary: '#fff'
@@ -86,10 +85,11 @@ const theme = createMuiTheme({
     palette: {
       lightGrey: '#f5f6f8',
       blueGrey: '#424f62',
-      grey: '#4A4A4A',
-      red: '#F66',
-      green: '#6C6',
-      blue: '#387DF4'
+      // network color schema
+      grey: '#4A4A4A', // equipment
+      red: '#F66', // gas
+      green: '#6C6', // oil
+      blue: '#387DF4' // water
     },
     layout: {
       openDrawerWidth: 272, // TODO: adjust according to design
