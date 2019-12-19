@@ -35,7 +35,7 @@ const CustomNodeDemo = props => {
 	// register some other factories as well
 	engine
 		.getPortFactories()
-		.registerFactory(new SimplePortFactory('equipment', config => new EquipmentPortModel(PortModelAlignment.BOTTOM)));
+		.registerFactory(new SimplePortFactory('equipment', config => new EquipmentPortModel(PortModelAlignment.TOP)));
 	engine.getLinkFactories().registerFactory(new AdvancedLinkFactory());
 	engine.getNodeFactories().registerFactory(new EquipmentNodeFactory());
 	engine.getNodeFactories().registerFactory(new TankNodeFactory());
@@ -45,62 +45,117 @@ const CustomNodeDemo = props => {
 	//2) setup the diagram model
 	const model = new DiagramModel();
 
-	//3-A) create a default node
-	const node1 = new DefaultNodeModel('Node 1', 'rgb(0,192,255)');
-	const port1 = node1.addPort(new AdvancedPortModel(false, 'out', 'Out'));
-	node1.setPosition(100, 200);
+	//3) Instantiate nodes
 
-	//3-B) create our new custom node
-	const equipment = new EquipmentNodeModel('equipment', theme.custom.palette.grey, {width: 30, height: 30});
-	equipment.setPosition(250, 108);
+	// Group 1
+	const gasMeter1 = new MeterNodeModel('gas-meter-1', theme.custom.palette.red, {width: 35, height: 35});
+	gasMeter1.setPosition(150, 200);
+	const well1 = new WellNodeModel('well-1', theme.custom.palette.green, {width: 35, height: 35});
+	well1.setPosition(150, 300);
+	const gasMeter2 = new MeterNodeModel('gas-meter-2', theme.custom.palette.red, {width: 35, height: 35});
+	gasMeter2.setPosition(150, 400);
 
-	const node3 = new DefaultNodeModel('Node 3', 'red');
-	const port3 = node3.addPort(new AdvancedPortModel(false, 'in', 'In'));
-	node3.setPosition(500, 100);
+	const groupOneNodes = [
+		gasMeter1, 
+		well1, 
+		gasMeter2
+	]
 
-	//3-C) link the 2 nodes together
-	const link1 = port1.link(equipment.getPort(PortModelAlignment.BOTTOM));
-	const link2 = port3.link(equipment.getPort(PortModelAlignment.BOTTOM));
+	// Group 2
+	const equipment1 = new EquipmentNodeModel('equipment-1', theme.custom.palette.grey, {width: 35, height: 35});
+	equipment1.setPosition(590, 200);
+	const oilTank1 = new TankNodeModel('oil-tank-1', theme.custom.palette.green, {width: 35, height: 35});
+	oilTank1.setPosition(380, 350);
+	const oilTank2 = new TankNodeModel('oil-tank-2', theme.custom.palette.green, {width: 35, height: 35});
+	oilTank2.setPosition(480, 400);
+	const oilTank3 = new TankNodeModel('oil-tank-3', theme.custom.palette.green, {width: 35, height: 35});
+	oilTank3.setPosition(580, 450);
+	const waterTank1 = new TankNodeModel('water-tank-1', theme.custom.palette.blue, {width: 35, height: 35});
+	waterTank1.setPosition(680, 370);
+	const waterTank2 = new TankNodeModel('water-tank-2', theme.custom.palette.blue, {width: 35, height: 35});
+	waterTank2.setPosition(780, 390);
+	const gasMeter3 = new MeterNodeModel('gas-meter-3', theme.custom.palette.red, {width: 35, height: 35});
+	gasMeter3.setPosition(940, 100);
+	const gasMeter4 = new MeterNodeModel('gas-meter-4', theme.custom.palette.red, {width: 35, height: 35});
+	gasMeter4.setPosition(980, 220);
+	const gasMeter5 = new MeterNodeModel('gas-meter-5', theme.custom.palette.red, {width: 35, height: 35});
+	gasMeter5.setPosition(960, 330);
+	const oilMeter1 = new MeterNodeModel('oil-meter', theme.custom.palette.green, {width: 35, height: 35});
+	oilMeter1.setPosition(960, 410);
 
-	const node4 = new DefaultNodeModel('Node 4', 'rgb(0,192,255)');
-	const port4 = node4.addPort(new AdvancedPortModel(false, 'out', 'Out'));
-	node4.setPosition(200, 10);
+	const groupTwoNodes = [
+		equipment1, 
+		oilTank1, 
+		oilTank2, 
+		oilTank3, 
+		waterTank1, 
+		waterTank2, 
+		gasMeter3, 
+		gasMeter4, 
+		gasMeter5, 
+		oilMeter1
+	];
+	
+	// Group 3
+	const equipment2 = new EquipmentNodeModel('equipment-2', theme.custom.palette.grey, {width: 35, height: 35});
+	equipment2.setPosition(590, 550);
+	const gasMeter6 = new MeterNodeModel('gas-meter-6', theme.custom.palette.red, {width: 35, height: 35});
+	gasMeter6.setPosition(590, 680);
+	const gasMeter7 = new MeterNodeModel('gas-meter-7', theme.custom.palette.red, {width: 35, height: 35});
+	gasMeter7.setPosition(750, 500);
+	const gasMeter8 = new MeterNodeModel('gas-meter-8', theme.custom.palette.red, {width: 35, height: 35});
+	gasMeter8.setPosition(720, 580);
+	const well2 = new WellNodeModel('well-2', theme.custom.palette.green, {width: 35, height: 35});
+	well2.setPosition(720, 685);
 
-	const link3 = port4.link(equipment.getPort(PortModelAlignment.BOTTOM));
+	const groupThreeNodes = [
+		equipment2,
+		gasMeter6,
+		gasMeter7,
+		gasMeter8,
+		well2
+	];
 
-	const node5 = new DefaultNodeModel('Node 5', 'mediumpurple');
-	const port5 = node5.addPort(new AdvancedPortModel(false, 'in', 'In'));
-	node5.setPosition(400, 300);
+	// Group 4
+	const equipment3 = new EquipmentNodeModel('equipment-3', theme.custom.palette.grey, {width: 35, height: 35});
+	equipment3.setPosition(1100, 480);
+	const oilTank4 = new TankNodeModel('oil-tank-4', theme.custom.palette.green, {width: 35, height: 35});
+	oilTank4.setPosition(900, 690);
+	const oilTank5 = new TankNodeModel('oil-tank-5', theme.custom.palette.green, {width: 35, height: 35});
+	oilTank5.setPosition(1000, 710);
+	const oilTank6 = new TankNodeModel('oil-tank-6', theme.custom.palette.green, {width: 35, height: 35});
+	oilTank6.setPosition(1100, 730);
+	const waterTank3 = new TankNodeModel('water-tank-3', theme.custom.palette.blue, {width: 35, height: 35});
+	waterTank3.setPosition(1200, 700);
+	const waterTank4 = new TankNodeModel('water-tank-4', theme.custom.palette.blue, {width: 35, height: 35});
+	waterTank4.setPosition(1300, 680);
+	const gasMeter9 = new MeterNodeModel('gas-meter-9', theme.custom.palette.red, {width: 35, height: 35});
+	gasMeter9.setPosition(1300, 380);
+	const gasMeter10 = new MeterNodeModel('gas-meter-10', theme.custom.palette.red, {width: 35, height: 35});
+	gasMeter10.setPosition(1300, 470);
+	const oilMeter2 = new MeterNodeModel('oil-meter-2', theme.custom.palette.green, {width: 35, height: 35});
+	oilMeter2.setPosition(1310, 560);
 
-	const link4 = port5.link(equipment.getPort(PortModelAlignment.BOTTOM));
+	const groupFourNodes = [
+		equipment3,
+		oilTank4,
+		oilTank5,
+		oilTank6,
+		waterTank3,
+		waterTank4,
+		gasMeter9,
+		gasMeter10,
+		oilMeter2
+	];
 
-	const waterTank = new TankNodeModel('water-tank', theme.custom.palette.blue, {width: 34, height: 34});
-	waterTank.setPosition(10, 500);
-	const oilTank = new TankNodeModel('oil-tank', theme.custom.palette.green, {width: 34, height: 34});
-	oilTank.setPosition(110, 500);
-	const well = new WellNodeModel('well', theme.custom.palette.green, {width: 32, height: 32});
-	well.setPosition(210, 500);
-	const oilMeter = new MeterNodeModel('oil-meter', theme.custom.palette.green, {width: 30, height: 30});
-	oilMeter.setPosition(310, 500);
-	const gasMeter = new MeterNodeModel('gas-meter', theme.custom.palette.red, {width: 30, height: 30});
-	gasMeter.setPosition(410, 500);
+	// const link4 = port5.link(equipment.getPort(PortModelAlignment.BOTTOM));
 
 	//4) add the models to the root graph
 	model.addAll(
-		equipment,
-		waterTank,
-		oilTank,
-		well,
-		oilMeter,
-		gasMeter,
-		link1,
-		link2,
-		link3,
-		link4,
-		node1,
-		node3,
-		node4,
-		node5
+		...groupOneNodes,
+		...groupTwoNodes,
+		...groupThreeNodes,
+		...groupFourNodes
 	);
 
 	//5) load model into engine
