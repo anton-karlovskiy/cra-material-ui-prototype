@@ -1,24 +1,20 @@
 
 import React from 'react';
 import { AbstractReactFactory } from '@projectstorm/react-canvas-core';
-import { DiagramEngine } from '@projectstorm/react-diagrams-core';
 
 import EquipmentNodeWidget from 'containers/Network/Equipment/EquipmentNodeWidget';
 import EquipmentNodeModel from 'containers/Network/Equipment/EquipmentNodeModel';
+import { NODE_TYPE } from 'utils/constants/network';
 
-class EquipmentNodeFactory extends AbstractReactFactory<EquipmentNodeModel, DiagramEngine> {
-	constructor(color, size) {
-		super('equipment');
-		this.color = color;
-		this.size = size;
+class EquipmentNodeFactory extends AbstractReactFactory {
+	constructor() {
+		super(NODE_TYPE.EQUIPMENT);
 	}
 
-	generateReactWidget(event): JSX.Element {
+	generateReactWidget(event) {
 		return (
 			<EquipmentNodeWidget
 				engine={this.engine}
-				color={this.color}
-				size={this.size}
 				node={event.model} />
 		);
 	}

@@ -22,7 +22,7 @@ const theme = createMuiTheme({
       contrastText: '#fff'
     },
     background: {
-      default: '#fafafa'
+      default: '#f5f6f8'
     },
     text: {
       primary: '#2f2f2f',
@@ -83,17 +83,20 @@ const theme = createMuiTheme({
   },
   custom: {
     palette: {
-      lightGrey: '#f5f6f8',
       blueGrey: '#424f62',
       // network color schema
       grey: '#4A4A4A', // equipment
       red: '#F66', // gas
       green: '#6C6', // oil
-      blue: '#387DF4' // water
+      blue: '#387DF4', // water
+      darkBlue: '#34528b'
     },
     layout: {
-      openDrawerWidth: 272, // TODO: adjust according to design
-      closeDrawerWidth: 64
+      openedDrawerWidth: 272, // TODO: adjust according to design
+      closedDrawerWidth: 64,
+      upperSubToolbarHeight: 80,
+      lowerSubToolbarHeight: 64,
+      networkPopperWidth: 280
     }
   }
 });

@@ -8,7 +8,7 @@ import BootstrapInput from 'components/LabeledSelect/BootstrapInput';
 
 const useStyles = makeStyles(theme => ({
   root: {
-    margin: theme.spacing(0, 1),
+    padding: theme.spacing(0, 1),
     position: 'unset',
     display: 'inline-flex',
     alignItems: 'center'
@@ -33,7 +33,13 @@ const LabeledSelect = ({ label }) => {
 
   return (
     <div className={classes.root}>
-      <InputLabel classes={{root: classes.inputLabel}} htmlFor='labeled-select'>{label}</InputLabel>
+      { label && (
+        <InputLabel
+          classes={{root: classes.inputLabel}}
+          htmlFor='labeled-select'>
+          {label}
+        </InputLabel>
+      ) }
       <NativeSelect
         id='labeled-select'
         value={value}

@@ -1,21 +1,22 @@
 
-import { NodeModel, NodeModelGenerics, PortModelAlignment } from '@projectstorm/react-diagrams';
+import { NodeModel, PortModelAlignment } from '@projectstorm/react-diagrams';
 
 import TankPortModel from 'containers/Network/Tank/TankPortModel';
+import { NODE_TYPE, COLOR_SET } from 'utils/constants/network';
 
-export interface TankNodeModelGenerics {
-	PORT: TankPortModel;
-}
-
-class TankNodeModel extends NodeModel<NodeModelGenerics & TankNodeModelGenerics> {
-	constructor(name: string, color: string, size) {
+class TankNodeModel extends NodeModel {
+	constructor(name, color, size) {
 		super({
-			type: 'tank',
+			type: NODE_TYPE.TANK,
 			name: name || 'Untitled',
-			color: color || 'rgb(0,192,255)', // TODO: set default color
-			size: size || {width: 30, height: 30}
+			color: color || COLOR_SET.DEFAULT_COLOR,
+			size: size || {width: 35, height: 35}
 		});
-		this.addPort(new TankPortModel(PortModelAlignment.BOTTOM));
+		const portOptions = {
+			alignment: PortModelAlignment.BOTTOM,
+			linkColorFromPort: color
+		};
+		this.addPort(new TankPortModel(portOptions));
 	}
 }
 

@@ -1,39 +1,25 @@
 
-import React, { Component } from 'react';
-import { PortModelAlignment, PortWidget } from '@projectstorm/react-diagrams';
+import React from 'react';
 
-import Port from 'containers/Network/Port';
-import OilIcon from 'components/Icons/SvgIcons/OilIcon';
+import NodeWidgetWrapper from 'hoc/NodeWidgetWrapper';
+import MeterIcon from 'components/Icons/SvgIcons/MeterIcon';
 
-class MeterNodeWidget extends Component {
-	render() {
-		const { node, engine } = this.props;
-		const { /*name, */color, size } = node.getOptions();
+const MeterNodeWidget = ({ node, engine }) => {
+	const { name, color, size } = node.getOptions();
 
-		return (
-			<div
-				style={{
-					position: 'relative',
-					width: size.width,
-					height: size.height
-				}}>
-        <OilIcon
-					color={color}
-					width={size.width}
-					height={size.height} />
-				<PortWidget
-					style={{
-						left: size.width / 2 - 8,
-						top: size.height - 8,
-						position: 'absolute'
-					}}
-					port={node.getPort(PortModelAlignment.BOTTOM)}
-					engine={engine}>
-          <Port />
-				</PortWidget>
-			</div>
-		);
-	}
-}
+	return (
+		<NodeWidgetWrapper
+			color={color}
+			node={node}
+			engine={engine}
+			size={size}
+			name={name}>
+			<MeterIcon
+				color={color}
+				width={size.width}
+				height={size.height} />
+		</NodeWidgetWrapper>
+	);
+};
 
 export default MeterNodeWidget;

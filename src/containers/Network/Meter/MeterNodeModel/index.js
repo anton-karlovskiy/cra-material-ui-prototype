@@ -1,21 +1,22 @@
 
-import { NodeModel, NodeModelGenerics, PortModelAlignment } from '@projectstorm/react-diagrams';
+import { NodeModel, PortModelAlignment } from '@projectstorm/react-diagrams';
 
 import MeterPortModel from 'containers/Network/Meter/MeterPortModel';
+import { NODE_TYPE, COLOR_SET } from 'utils/constants/network';
 
-export interface MeterNodeModelGenerics {
-	PORT: MeterPortModel;
-}
-
-class MeterNodeModel extends NodeModel<NodeModelGenerics & MeterNodeModelGenerics> {
-	constructor(name: string, color: string, size) {
+class MeterNodeModel extends NodeModel {
+	constructor(name, color, size) {
 		super({
-			type: 'meter',
+			type: NODE_TYPE.METER,
 			name: name || 'Untitled',
-			color: color || 'rgb(0,192,255)', // TODO: set default color
-			size: size || {width: 30, height: 30}
+			color: color || COLOR_SET.DEFAULT_COLOR,
+			size: size || {width: 35, height: 35}
 		});
-		this.addPort(new MeterPortModel(PortModelAlignment.BOTTOM));
+		const portOptions = {
+			alignment: PortModelAlignment.BOTTOM,
+			linkColorFromPort: color
+		};
+		this.addPort(new MeterPortModel(portOptions));
 	}
 }
 

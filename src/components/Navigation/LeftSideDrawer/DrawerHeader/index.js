@@ -1,8 +1,7 @@
 
 import React from 'react';
 import { makeStyles, useTheme } from '@material-ui/core/styles';
-
-import { Typography } from '@material-ui/core';
+import Typography from '@material-ui/core/Typography';
 
 import Logo from 'components/Logo';
 import SearchIcon from 'components/Icons/SvgIcons/SearchIcon';
@@ -28,7 +27,7 @@ const DrawerHeader = () => {
   return (
     <div className={classes.root}>
       <div className={classes.flex}>
-        <Logo widthSpan={theme.custom.layout.closeDrawerWidth} />
+        <Logo widthSpan={theme.custom.layout.closedDrawerWidth} />
         <Typography variant='h4' color='secondary'>My Networks</Typography>
       </div>
       <SearchIcon width={17} height={17} color={theme.palette.primary.main} />

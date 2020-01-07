@@ -1,24 +1,20 @@
 
 import React from 'react';
 import { AbstractReactFactory } from '@projectstorm/react-canvas-core';
-import { DiagramEngine } from '@projectstorm/react-diagrams-core';
 
 import MeterNodeWidget from 'containers/Network/Meter/MeterNodeWidget';
 import MeterNodeModel from 'containers/Network/Meter/MeterNodeModel';
+import { NODE_TYPE } from 'utils/constants/network';
 
-class MeterNodeFactory extends AbstractReactFactory<MeterNodeModel, DiagramEngine> {
-	constructor(color, size) {
-		super('meter');
-		this.color = color;
-		this.size = size;
+class MeterNodeFactory extends AbstractReactFactory {
+	constructor() {
+		super(NODE_TYPE.METER);
 	}
 
-	generateReactWidget(event): JSX.Element {
+	generateReactWidget(event) {
 		return (
 			<MeterNodeWidget
 				engine={this.engine}
-				color={this.color}
-				size={this.size} 
 				node={event.model} />
 		);
 	}

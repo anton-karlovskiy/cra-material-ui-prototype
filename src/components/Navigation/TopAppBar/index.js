@@ -1,97 +1,62 @@
 
-import React from 'react';
+import React, { useState } from 'react';
 import clsx from 'clsx';
 import { makeStyles } from '@material-ui/core/styles';
-import IconButton from '@material-ui/core/IconButton';
-import MenuIcon from '@material-ui/icons/Menu';
-import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
-import Typography from '@material-ui/core/Typography';
-import Box from '@material-ui/core/Box';
 
-import OutlinedButton from 'components/Buttons/OutlinedButton';
-import ContainedButton from 'components/Buttons/ContainedButton';
-import SubToolbar from 'components/Navigation/TopAppBar/SubToolbar';
+import UpperSubToolbarOnView from './UpperSubToolbarOnView';
+import UpperSubToolbarOnEdit from './UpperSubToolbarOnEdit';
+import LowerSubToolbarOnView from './LowerSubToolbarOnView';
+import LowerSubToolbarOnEdit from './LowerSubToolbarOnEdit';
+import commonUseStyles from 'styles/common-use-styles';
 
 const useStyles = makeStyles(theme => ({
   appBar: {
-    marginLeft: theme.custom.layout.closeDrawerWidth,
-    width: `calc(100% - ${theme.custom.layout.closeDrawerWidth}px)`,
+    marginLeft: theme.custom.layout.closedDrawerWidth,
+    width: `calc(100% - ${theme.custom.layout.closedDrawerWidth}px)`,
     zIndex: theme.zIndex.drawer + 1,
     transition: theme.transitions.create(['width', 'margin'], {
       easing: theme.transitions.easing.sharp,
       duration: theme.transitions.duration.leavingScreen
     }),
-    boxShadow: `${theme.spacing(10/8, 20/8, 32/8, 0)} rgba(208, 235, 237, 0.3)`,
     backgroundColor: theme.palette.common.white
   },
   appBarShift: {
-    marginLeft: theme.custom.layout.openDrawerWidth,
-    width: `calc(100% - ${theme.custom.layout.openDrawerWidth}px)`,
-    transition: theme.transitions.create(['width', 'margin'], {
-      easing: theme.transitions.easing.sharp,
-      duration: theme.transitions.duration.enteringScreen
-    })
+    marginLeft: theme.custom.layout.openedDrawerWidth,
+    width: `calc(100% - ${theme.custom.layout.openedDrawerWidth}px)`
   },
   toolbar: {
-    padding: theme.spacing(20/8, 30/8),
     display: 'block'
-  },
-  menuButton: {
-    marginRight: theme.spacing(2)
-  },
-  hide: {
-    display: 'none'
   }
 }));
 
 const TopAppBar = ({ open, openDrawer, closeDrawer }) => {
   const classes = useStyles();
+  const commonClasses = commonUseStyles();
+  const [isEditMode, setEditMode] = useState(true);
 
   return (
     <AppBar
       position='fixed'
-      className={clsx(classes.appBar, {
+      className={clsx(classes.appBar, commonClasses.boxShadow, {
         [classes.appBarShift]: open
       })}>
-      <Toolbar className={classes.toolbar}>
-        <Box
-          mb={2}
-          flexGrow={1}
-          display='flex'
-          justifyContent='space-between'
-          alignItems='center'>
-          <Box display='flex' alignItems='center'>
-            {/* TODO: replace with svgicon */}
-            <IconButton
-              aria-label='open drawer'
-              onClick={openDrawer}
-              color='primary'
-              className={clsx(classes.menuButton, {
-                [classes.hide]: open
-              })}>
-              <MenuIcon />
-            </IconButton>
-            <IconButton
-              aria-label='close drawer'
-              onClick={closeDrawer}
-              color='primary'
-              className={clsx(classes.menuButton, {
-                [classes.hide]: !open
-              })}>
-              <ChevronLeftIcon />
-            </IconButton>
-            <Typography color='textPrimary' variant='h3'>
-              Washington 10H Battery Oil
-            </Typography>
-          </Box>
-          <div>
-            <OutlinedButton color='secondary'>Export...</OutlinedButton>
-            <ContainedButton color='secondary'>Edit</ContainedButton>
-          </div>
-        </Box>
-        <SubToolbar />
+      <Toolbar disableGutters className={classes.toolbar}>
+        { isEditMode ? (
+          <>
+            <UpperSubToolbarOnEdit />
+            <LowerSubToolbarOnEdit />
+          </>
+        ) : (
+          <>
+            <UpperSubToolbarOnView
+              open={open}
+              openDrawer={openDrawer}
+              closeDrawer={closeDrawer} />
+            <LowerSubToolbarOnView />
+          </>
+        ) }
       </Toolbar>
     </AppBar>
   );
