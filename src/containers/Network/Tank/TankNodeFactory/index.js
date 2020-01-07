@@ -1,24 +1,20 @@
 
 import React from 'react';
 import { AbstractReactFactory } from '@projectstorm/react-canvas-core';
-import { DiagramEngine } from '@projectstorm/react-diagrams-core';
 
 import TankNodeWidget from 'containers/Network/Tank/TankNodeWidget';
 import TankNodeModel from 'containers/Network/Tank/TankNodeModel';
+import { NODE_TYPE } from 'utils/constants/network';
 
-class TankNodeFactory extends AbstractReactFactory<TankNodeModel, DiagramEngine> {
-	constructor(color, size) {
-		super('tank');
-		this.color = color;
-		this.size = size;
+class TankNodeFactory extends AbstractReactFactory {
+	constructor() {
+		super(NODE_TYPE.TANK);
 	}
 
-	generateReactWidget(event): JSX.Element {
+	generateReactWidget(event) {
 		return (
 			<TankNodeWidget
 				engine={this.engine}
-				color={this.color}
-				size={this.size} 
 				node={event.model} />
 		);
 	}

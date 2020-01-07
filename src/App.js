@@ -20,7 +20,7 @@ import Network from 'containers/Network';
 // <Hierarchy />
 // <TankIcon color='#6C6' />
 // <EquipmentIcon color='#4A4A4A' />
-// <OilIcon color='#F66' />
+// <MeterIcon color='#F66' />
 // <WaterIcon color='#6C6' />
 // <WellIcon color='#6C6' />
 

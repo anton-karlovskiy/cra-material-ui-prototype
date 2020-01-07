@@ -3,7 +3,6 @@ import React from 'react';
 
 import SvgIconWrapper from 'hoc/SvgIconWrapper';
 
-// TODO: color #4A4A4A
 const EquipmentIcon = ({ width, height, viewBox, color, ...rest }) => (
   <SvgIconWrapper width={width || 30} height={height || 30} viewBox={viewBox || '0 0 30 30'} color={color} {...rest}>
     <g fill={color} fillRule='nonzero'>

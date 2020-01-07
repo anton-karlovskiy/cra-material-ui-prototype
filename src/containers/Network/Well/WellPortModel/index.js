@@ -1,17 +1,27 @@
 
-import { LinkModel, PortModel, DefaultLinkModel, PortModelAlignment } from '@projectstorm/react-diagrams';
+import { PortModel } from '@projectstorm/react-diagrams';
+
+import AdvancedLinkModel from 'containers/Network/CommonElements/AdvancedLink/AdvancedLinkModel';
+import { NODE_TYPE, COLOR_SET } from 'utils/constants/network';
 
 class WellPortModel extends PortModel {
-	constructor(alignment: PortModelAlignment) {
+	constructor(options = {}) {
 		super({
-			type: 'well',
-			name: alignment,
-			alignment: alignment
+			type: NODE_TYPE.WELL,
+			name: options.alignment,
+			alignment: options.alignment
 		});
+		this.linkColorFromPort = options.linkColorFromPort;
 	}
 
-	createLinkModel(): LinkModel {
-		return new DefaultLinkModel();
+	createLinkModel() {
+		const options = {
+			width: 2,
+			color: this.linkColorFromPort,
+			curvyness: 0,
+			selectedColor: COLOR_SET.DEFAULT_COLOR
+		};
+		return new AdvancedLinkModel(options);
 	}
 }
 

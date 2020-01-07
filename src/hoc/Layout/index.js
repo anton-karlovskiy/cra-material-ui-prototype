@@ -5,7 +5,6 @@ import { makeStyles } from '@material-ui/core/styles';
 import TopAppBar from 'components/Navigation/TopAppBar';
 import LeftSideDrawer from 'components/Navigation/LeftSideDrawer';
 
-const appbarHeight = 150;
 const useStyles = makeStyles(theme => ({
   root: {
     display: 'flex'
@@ -14,8 +13,8 @@ const useStyles = makeStyles(theme => ({
     flexGrow: 1,
     backgroundColor: theme.palette.background.default,
     padding: theme.spacing(2),
-    marginTop: appbarHeight, // TODO: hardcoded matching with appbar height
-    minHeight: `calc(100vh - ${appbarHeight}px)`
+    marginTop: theme.custom.layout.lowerSubToolbarHeight + theme.custom.layout.upperSubToolbarHeight,
+    minHeight: `calc(100vh - ${theme.custom.layout.lowerSubToolbarHeight + theme.custom.layout.upperSubToolbarHeight}px)`
   }
 }));
 

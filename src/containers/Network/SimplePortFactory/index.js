@@ -1,18 +1,17 @@
 
-import { DiagramEngine, PortModel } from '@projectstorm/react-diagrams';
+// ray test touch <
 import { AbstractModelFactory } from '@projectstorm/react-canvas-core';
 
-class SimplePortFactory extends AbstractModelFactory<PortModel, DiagramEngine> {
-	cb: (initialConfig?: any) => PortModel;
-
-	constructor(type: string, cb: (initialConfig?: any) => PortModel) {
+class SimplePortFactory extends AbstractModelFactory {
+	constructor(type, cb) {
 		super(type);
 		this.cb = cb;
 	}
 
-	generateModel(event): PortModel {
+	generateModel(event) {
 		return this.cb(event.initialConfig);
 	}
 }
 
 export default SimplePortFactory;
+// ray test touch >

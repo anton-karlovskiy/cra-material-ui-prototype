@@ -88,7 +88,7 @@ const useStyles = makeStyles(theme => ({
     flexGrow: 1,
     maxWidth: 400,
     '& > li > .MuiTreeItem-content': {
-      backgroundColor: theme.custom.palette.lightGrey,
+      backgroundColor: theme.palette.background.default,
       border: 'none',
       marginBottom: 1
     }

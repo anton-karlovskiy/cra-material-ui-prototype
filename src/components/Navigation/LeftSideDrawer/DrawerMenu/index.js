@@ -16,7 +16,7 @@ const useStyles = makeStyles(theme => ({
   tabRoot: {
     padding: 0,
     maxWidth: '100%',
-    minWidth: theme.custom.layout.openDrawerWidth
+    minWidth: theme.custom.layout.openedDrawerWidth
   },
   tabIndicator: {
     display: 'none'
@@ -30,7 +30,7 @@ const useStyles = makeStyles(theme => ({
     minHeight: theme.spacing(8)
   },
   tabIconWrapper: {
-    width: theme.custom.layout.closeDrawerWidth,
+    width: theme.custom.layout.closedDrawerWidth,
     display: 'flex',
     justifyContent: 'center'
   },

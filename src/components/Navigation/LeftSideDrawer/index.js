@@ -6,6 +6,7 @@ import Drawer from '@material-ui/core/Drawer';
 
 import DrawerHeader from 'components/Navigation/LeftSideDrawer/DrawerHeader';
 import DrawerMenu from 'components/Navigation/LeftSideDrawer/DrawerMenu';
+import commonUseStyles from 'styles/common-use-styles';
 
 const useStyles = makeStyles(theme => ({
   drawer: {
@@ -14,11 +15,10 @@ const useStyles = makeStyles(theme => ({
   },
   drawerPaper: {
     border: 'none',
-    backgroundColor: theme.custom.palette.blueGrey,
-    boxShadow: `${theme.spacing(10/8, 20/8, 32/8, 0)} rgba(208, 235, 237, 0.3)`
+    backgroundColor: theme.custom.palette.blueGrey
   },
   drawerOpen: {
-    width: theme.custom.layout.openDrawerWidth,
+    width: theme.custom.layout.openedDrawerWidth,
     transition: theme.transitions.create('width', {
       easing: theme.transitions.easing.sharp,
       duration: theme.transitions.duration.enteringScreen
@@ -30,12 +30,13 @@ const useStyles = makeStyles(theme => ({
       duration: theme.transitions.duration.leavingScreen
     }),
     overflowX: 'hidden',
-    width: theme.custom.layout.closeDrawerWidth
+    width: theme.custom.layout.closedDrawerWidth
   }
 }));
 
 const LeftSideDrawer = ({ open }) => {
   const classes = useStyles();
+  const commonClasses = commonUseStyles();
 
   return (
     <Drawer
@@ -45,7 +46,7 @@ const LeftSideDrawer = ({ open }) => {
         [classes.closeDrawer]: !open
       })}
       classes={{
-        paper: clsx(classes.drawerPaper, {
+        paper: clsx(classes.drawerPaper, commonClasses.boxShadow, {
           [classes.drawerOpen]: open,
           [classes.closeDrawer]: !open
         })

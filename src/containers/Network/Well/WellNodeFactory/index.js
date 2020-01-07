@@ -1,24 +1,20 @@
 
 import React from 'react';
 import { AbstractReactFactory } from '@projectstorm/react-canvas-core';
-import { DiagramEngine } from '@projectstorm/react-diagrams-core';
 
 import WellNodeWidget from 'containers/Network/Well/WellNodeWidget';
 import WellNodeModel from 'containers/Network/Well/WellNodeModel';
+import { NODE_TYPE } from 'utils/constants/network';
 
-class WellNodeFactory extends AbstractReactFactory<WellNodeModel, DiagramEngine> {
-	constructor(color, size) {
-		super('well');
-		this.color = color;
-		this.size = size;
+class WellNodeFactory extends AbstractReactFactory {
+	constructor() {
+		super(NODE_TYPE.WELL);
 	}
 
-	generateReactWidget(event): JSX.Element {
+	generateReactWidget(event) {
 		return (
 			<WellNodeWidget
 				engine={this.engine}
-				color={this.color}
-				size={this.size} 
 				node={event.model} />
 		);
 	}

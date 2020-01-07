@@ -1,21 +1,22 @@
 
-import { NodeModel, NodeModelGenerics, PortModelAlignment } from '@projectstorm/react-diagrams';
+import { NodeModel, PortModelAlignment } from '@projectstorm/react-diagrams';
 
 import WellPortModel from 'containers/Network/Well/WellPortModel';
+import { NODE_TYPE, COLOR_SET } from 'utils/constants/network';
 
-export interface WellNodeModelGenerics {
-	PORT: WellPortModel;
-}
-
-class WellNodeModel extends NodeModel<NodeModelGenerics & WellNodeModelGenerics> {
-	constructor(name: string, color: string, size) {
+class WellNodeModel extends NodeModel {
+	constructor(name, color, size) {
 		super({
-			type: 'well',
+			type: NODE_TYPE.WELL,
 			name: name || 'Untitled',
-			color: color || 'rgb(0,192,255)', // TODO: set default color
-			size: size || {width: 30, height: 30}
+			color: color || COLOR_SET.DEFAULT_COLOR,
+			size: size || {width: 35, height: 35}
 		});
-		this.addPort(new WellPortModel(PortModelAlignment.BOTTOM));
+		const portOptions = {
+			alignment: PortModelAlignment.BOTTOM,
+			linkColorFromPort: color
+		};
+		this.addPort(new WellPortModel(portOptions));
 	}
 }
 
