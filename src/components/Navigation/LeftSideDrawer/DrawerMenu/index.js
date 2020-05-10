@@ -36,7 +36,7 @@ const useStyles = makeStyles(theme => ({
   },
   selectedTab: {
     backgroundColor: theme.palette.primary.main,
-    transition: `all ${theme.transitions.duration.standard}ms ${theme.transitions.easing.easeIn} 0ms` // TODO: improve animation
+    transition: `all ${theme.transitions.duration.standard}ms ${theme.transitions.easing.easeIn} 0ms`
   }
 }));
 

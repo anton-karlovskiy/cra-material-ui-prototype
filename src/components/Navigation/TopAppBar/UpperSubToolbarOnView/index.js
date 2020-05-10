@@ -39,7 +39,6 @@ const UpperSubToolbarOnView = ({ open, openDrawer, closeDrawer }) => {
   return (
     <div className={classes.root}>
       <div className={classes.flex}>
-        {/* TODO: replace with svgicon */}
         <IconButton
           edge='start'
           aria-label='open drawer'

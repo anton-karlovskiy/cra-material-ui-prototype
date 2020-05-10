@@ -7,7 +7,6 @@ import Typography from '@material-ui/core/Typography';
 
 import ArrowIcon from 'components/Icons/SvgIcons/ArrowIcon';
 
-// TODO: functionality
 const CustomBreadcrumbs = () => {
   const theme = useTheme();
 

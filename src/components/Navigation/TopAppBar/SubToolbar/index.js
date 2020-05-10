@@ -73,7 +73,6 @@ const SubToolbar = () => {
       <div>
         <LabeledSelect label='Product' />
         <LabeledSelect label='Disposition' />
-        {/* TODO: datepicker */}
         <LabeledSelect label='Date' />
       </div>
     </Paper>

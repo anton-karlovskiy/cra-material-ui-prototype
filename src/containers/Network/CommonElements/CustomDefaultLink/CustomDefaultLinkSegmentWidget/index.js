@@ -32,8 +32,11 @@ class CustomDefaultLinkSegmentWidget extends Component {
 			// onContextMenu: () => {
 			onContextMenu: event => {
 				if (!this.props.link.isLocked()) {
-          event.preventDefault();
-					this.props.link.remove();
+					event.preventDefault();
+					// ray test touch <
+					console.log('ray : ***** [onContextMenu]');
+					// this.props.link.remove();
+					// ray test touch >
 				}
 			}
 		});

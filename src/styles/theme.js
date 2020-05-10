@@ -92,7 +92,7 @@ const theme = createMuiTheme({
       darkBlue: '#34528b'
     },
     layout: {
-      openedDrawerWidth: 272, // TODO: adjust according to design
+      openedDrawerWidth: 272,
       closedDrawerWidth: 64,
       upperSubToolbarHeight: 80,
       lowerSubToolbarHeight: 64,
