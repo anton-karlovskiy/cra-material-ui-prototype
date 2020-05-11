@@ -73,7 +73,7 @@ class AdvancedLinkWidget extends CustomDefaultLinkWidget {
 						onMouseDown: event => {
 							// MEMO: block middle pointing
 							// ray test touch <
-							console.log('ray : ***** [onMouseDown] event => ', event);
+							console.log('[AdvancedLinkWidget render generateLink generateLinePath onMouseDown] event => ', event);
 							// this.addPointToLink(event, j + 1);
 							// ray test touch >
 						}
