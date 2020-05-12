@@ -20,6 +20,7 @@ class CustomDefaultLinkSegmentWidget extends Component {
 				this.props.onSelection(false);
 			},
 			onMouseEnter: () => {
+				// MEMO: when mouse entering link
 				this.props.onSelection(true);
 			},
 			...this.props.extras,
@@ -33,10 +34,9 @@ class CustomDefaultLinkSegmentWidget extends Component {
 			onContextMenu: event => {
 				if (!this.props.link.isLocked()) {
 					event.preventDefault();
-					// ray test touch <
+					// MEMO: right click -> remove the link by default so block it
 					console.log('[CustomDefaultLinkSegmentWidget onContextMenu]');
 					// this.props.link.remove();
-					// ray test touch >
 				}
 			}
 		});

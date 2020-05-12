@@ -1,10 +1,7 @@
 
 import React from 'react';
 import { LinkWidget } from '@projectstorm/react-diagrams-core';
-// ray test touch <
-// import { DefaultLinkWidget } from '@projectstorm/react-diagrams';
 import CustomDefaultLinkWidget from 'containers/Network/CommonElements/CustomDefaultLink/CustomDefaultLinkWidget';
-// ray test touch >
 
 const CustomLinkArrowWidget = ({ point, previousPoint, color }) => {
 	const angle =
@@ -42,10 +39,8 @@ const CustomLinkArrowWidget = ({ point, previousPoint, color }) => {
 	);
 };
 
-// ray test touch <
-// class AdvancedLinkWidget extends DefaultLinkWidget {
+// MEMO: extend customized link widget
 class AdvancedLinkWidget extends CustomDefaultLinkWidget {
-// ray test touch > CustomDefaultLinkWidget
 	generateArrow(point, previousPoint) {
 		return (
 			<CustomLinkArrowWidget
@@ -72,10 +67,8 @@ class AdvancedLinkWidget extends CustomDefaultLinkWidget {
 						'data-point': j,
 						onMouseDown: event => {
 							// MEMO: block middle pointing
-							// ray test touch <
-							console.log('[AdvancedLinkWidget render generateLink generateLinePath onMouseDown] event => ', event);
+							console.log('[AdvancedLinkWidget render generateLink generateLinePath onMouseDown]');
 							// this.addPointToLink(event, j + 1);
-							// ray test touch >
 						}
 					},
 					j
