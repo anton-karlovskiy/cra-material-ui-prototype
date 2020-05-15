@@ -4,7 +4,6 @@ import { makeStyles } from '@material-ui/core/styles';
 import createEngine, { DiagramModel } from '@projectstorm/react-diagrams';
 import { useTheme } from '@material-ui/core/styles';
 
-// import the custom models
 // equipment
 import EquipmentNodeModel from 'containers/Network/Equipment/EquipmentNodeModel';
 import EquipmentNodeFactory from 'containers/Network/Equipment/EquipmentNodeFactory';
